@@ -1,0 +1,43 @@
+
+Detalii implementare Tema 2 - Protocoale de comunicatii
+
+Limbaj: C++
+Compilator folosit: g++
+
+	Structura aplicatiei:
+		Clasa RouterArray - clasa container ce contine un vector de rutere, unul de mesaje si unul de evenimente
+		Clasa Router - contine un topologia ruterului precum si tabela de rutare
+		Clasa Graph - corespunzatoare topologiei contine o matricea de adiacenta a retelei si vectorul de versiuni ale 
+			      ruterelor din retea
+		Clasa RoutTable - contine tabela de rutare (constituit dintr-un vector din care obtin nodurile aferente unei cai cu
+				  cu distanta minima si dintr-un vector ce retin distanta minima de la sursa la destinatie)
+		Clasa Message si Events - retin campurile necesare pentru un mesaj rutabil si a unui eveniment
+		
+	Functiile principale:
+		init_sim() - prin citirea celor trei fisiere din linia de comanda, va popula reteaua cu rutere si va constru vectorii de mesaje
+		             si evenimente. Tot de aici se vor transmite si primele mesaje de protocol.
+		process_messages() - pentru fiecare ruter, verifica daca sunt mesaje de primit, apoi retransmite aceste mesaje daca mai este necesar
+				     Verifica apoi daca trebuie pornit in retea un mesaj rutabil si pentru  fiecare ruter in parte, verifica daca acesta
+				     are de primit astfel de mesaje.
+		update_routing_table() - pentru fiecare ruter, updateaza tabela de rutare
+		triger_events() - verifica daca la timpul curent s-a produs un eveniment si trimite mesaje de rutare
+
+	Structura unui mesaj de protocol:
+
+		 - sursa mesajului | numarul de vecini | versiunea mesajului | lista de perechi <nod,cost> separate de spatiu
+				     	
+	Transmiterea mesajului de protocol:
+		
+		- Se adauga in mesaj versiunea corespunzatoare nodului curent din vectorul de versiuni. La primire se verifica daca versiunea
+		  este mai noua si se updateaza informatiile.
+
+	Completari: 
+		 - Codul contine si comentarii pentru a usura intelegerea implementarii.
+		
+	Important! 
+		 - Am rulat toate cele cinci teste local, si imi trec toate testele exceptand testul 3.
+		 - Cu toate acestea pe vmchecker imi pica toate testele. In general, vmchecker-ul nu ma place, dar asta e! :)
+
+Dobre Adelin Grigore 323CC 			
+		
+
